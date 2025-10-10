@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->string('id')->primary()->comment('工号');
-            $table->string('name')->comment('姓名');
-            $table->string('dept_id')->comment('部门 ID');
-            $table->string('password')->nullable();
+        Schema::create('terms', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->string('name')->comment('名称');
+            $table->date('start_date')->comment('开始日期');
+            $table->date('end_date')->comment('结束日期');
+            $table->boolean('enabled')->default(false);
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('terms');
     }
 };

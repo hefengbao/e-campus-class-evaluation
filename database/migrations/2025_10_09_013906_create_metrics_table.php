@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->string('id')->primary()->comment('工号');
-            $table->string('name')->comment('姓名');
-            $table->string('dept_id')->comment('部门 ID');
-            $table->string('password')->nullable();
+        Schema::create('metrics', function (Blueprint $table) {
+            $table->id();
+            $table->string('title')->comment('标准条目');
+            $table->tinyText('description')->comment('描述');
+            $table->unsignedInteger('point')->comment('分值');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('metrics');
     }
 };

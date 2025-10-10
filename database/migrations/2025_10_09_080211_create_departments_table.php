@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->string('id')->primary()->comment('工号');
-            $table->string('name')->comment('姓名');
-            $table->string('dept_id')->comment('部门 ID');
-            $table->string('password')->nullable();
+        Schema::create('departments', function (Blueprint $table) {
+            $table->string('id')->primary()->comment('部门 ID');
+            $table->string('name')->comment('部门名称');
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('departments');
     }
 };
