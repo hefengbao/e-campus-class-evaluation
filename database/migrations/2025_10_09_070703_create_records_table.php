@@ -29,6 +29,7 @@ return new class extends Migration
             $table->text('teaching_record_attachments')->comment('教学情况记录附件');
             $table->text('suggestion')->comment('建议');
             $table->decimal('score',1)->comment('评分');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
