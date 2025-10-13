@@ -9,6 +9,7 @@
         "php": "^8.2",
         "afatmustafa/blade-hugeicons": "^1.0",
         "apereo/phpcas": "^1.6",
+        "codeat3/blade-grommet-icons": "^1.10",
         "filament/filament": "^4.1",
         "kra8/laravel-snowflake": "^2.4",
         "laravel/framework": "^12.0",
