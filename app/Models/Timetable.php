@@ -4,9 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Kra8\Snowflake\HasSnowflakePrimary;
 
 class Timetable extends Model
 {
+    use HasSnowflakePrimary;
+
+    public $incrementing = false;
+
+    protected $with = ['teacher','department'];
 
     public function teacher(): BelongsTo
     {

@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Term extends Model
 {
+    protected $primaryKey = 'id';
+    protected $keyType = 'string';
+    public $incrementing = false;
     protected $fillable = ['id','name', 'start_date', 'end_date', 'enabled'];
 
     protected function casts(): array
