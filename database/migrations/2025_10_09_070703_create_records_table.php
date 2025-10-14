@@ -24,10 +24,10 @@ return new class extends Migration
             $table->unsignedTinyInteger('start_session')->comment('开始节次');
             $table->unsignedTinyInteger('end_session')->comment('结束节次');
             $table->string('expert_id')->comment('专家ID');
-            $table->string('expert_type')->comment('专家类型');
+            $table->string('expert_type_id')->comment('专家类型');
             $table->text('teaching_record')->comment('教学情况记录');
             $table->text('teaching_record_attachments')->comment('教学情况记录附件');
-            $table->text('suggestion')->comment('建议');
+            $table->text('suggestion')->comment('教学评价及改进建议');
             $table->decimal('score',1)->comment('评分');
             $table->softDeletes();
             $table->timestamps();
