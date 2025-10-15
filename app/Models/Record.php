@@ -17,14 +17,11 @@ class Record extends Model
         'suggestion', 'score'
     ];
 
-    protected $with = ['teacher', 'expert', 'expertType'];
+    protected $with = ['team', 'teacher', 'expert', 'expertType'];
 
-    protected function casts()
+    public function term(): BelongsTo
     {
-        return [
-            'teaching_record_attachments' => 'array',
-            'score' => 'decimal:1'
-        ];
+        return $this->belongsTo(Term::class);
     }
 
     public function teacher(): BelongsTo
@@ -32,12 +29,21 @@ class Record extends Model
         return $this->belongsTo(User::class, 'teacher_id');
     }
 
-    public function expert(): BelongsTo{
+    public function expert(): BelongsTo
+    {
         return $this->belongsTo(Expert::class, 'expert_id');
     }
 
     public function expertType(): BelongsTo
     {
         return $this->belongsTo(ExpertType::class, 'expert_type_id');
+    }
+
+    protected function casts()
+    {
+        return [
+            'teaching_record_attachments' => 'array',
+            'score' => 'decimal:1'
+        ];
     }
 }
