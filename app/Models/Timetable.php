@@ -12,7 +12,7 @@ class Timetable extends Model
 
     public $incrementing = false;
 
-    protected $with = ['teacher','department'];
+    protected $with = ['teacher', 'department'];
 
     public function teacher(): BelongsTo
     {

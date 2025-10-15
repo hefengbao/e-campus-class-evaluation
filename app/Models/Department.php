@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Department extends Model
 {
-    protected $keyType = 'string';
     public $incrementing = false;
-
+    protected $keyType = 'string';
     protected $fillable = ['id', 'name'];
 }

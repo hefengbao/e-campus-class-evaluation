@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Metric extends Model
 {
-    protected $fillable = ['title','description','point'];
+    protected $fillable = ['title', 'description', 'point'];
 
     protected function casts(): array
     {

@@ -22,13 +22,6 @@ class User extends Authenticatable implements FilamentUser
         'password',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'password' => 'hashed',
-        ];
-    }
-
     public function canAccessPanel(Panel $panel): bool
     {
         if ($panel->getId() === 'admin') {
@@ -39,5 +32,12 @@ class User extends Authenticatable implements FilamentUser
         }
 
         return true;
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'password' => 'hashed',
+        ];
     }
 }
