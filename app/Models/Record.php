@@ -17,7 +17,7 @@ class Record extends Model
         'suggestion', 'score'
     ];
 
-    protected $with = ['team', 'teacher', 'expert', 'expertType'];
+    protected $with = ['term', 'teacher', 'expert', 'expertType'];
 
     public function term(): BelongsTo
     {
@@ -31,7 +31,7 @@ class Record extends Model
 
     public function expert(): BelongsTo
     {
-        return $this->belongsTo(Expert::class, 'expert_id');
+        return $this->belongsTo(Expert::class, 'expert_id', 'user_id');
     }
 
     public function expertType(): BelongsTo
