@@ -8,6 +8,7 @@
     "require": {
         "php": "^8.2",
         "afatmustafa/blade-hugeicons": "^1.0",
+        "andreiio/blade-remix-icon": "^3.7",
         "apereo/phpcas": "^1.6",
         "codeat3/blade-codicons": "^1.34",
         "codeat3/blade-google-material-design-icons": "^1.20",
