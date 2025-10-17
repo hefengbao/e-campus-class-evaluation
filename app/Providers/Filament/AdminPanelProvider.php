@@ -46,11 +46,13 @@ class AdminPanelProvider extends PanelProvider
                     ->icon('heroicon-c-cog'),
                 NavigationGroup::make('系统设置')
                     ->icon('ri-settings-line')
-                    ->items([
-                        NavigationItem::make()
-                            ->label('日志查看')
-                            ->url(url('log-viewer'), shouldOpenInNewTab: true),
-                    ])
+            ])
+            ->navigationItems([
+                NavigationItem::make()
+                    ->label('日志查看')
+                    ->group('系统设置')
+                    ->sort(5)
+                    ->url(url('log-viewer'), shouldOpenInNewTab: true),
             ])
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\Filament\Admin\Resources')
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\Filament\Admin\Pages')
