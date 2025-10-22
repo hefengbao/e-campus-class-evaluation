@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('metrics', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->comment('标准条目');
-            $table->tinyText('description')->comment('描述');
+            $table->string('item')->comment('条目');
             $table->unsignedInteger('point')->comment('分值');
             $table->timestamps();
         });
