@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('manager_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->tinyText('scope')->nullable()->comment('查询范围');
             $table->timestamps();
         });
     }
