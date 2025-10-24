@@ -82,7 +82,7 @@ class InitAdmin extends Command
                     'user_id' => $userId,
                 ]);
 
-                self::info('重置【超级管理员】成功。');
+                self::info('初始化【超级管理员】成功。');
 
                 return self::SUCCESS;
             } else {
