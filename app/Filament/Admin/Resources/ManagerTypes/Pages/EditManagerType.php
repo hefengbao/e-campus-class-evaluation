@@ -15,7 +15,7 @@ class EditManagerType extends EditRecord
     {
         return [
             ViewAction::make(),
-            DeleteAction::make(),
+            //DeleteAction::make(),
         ];
     }
 }

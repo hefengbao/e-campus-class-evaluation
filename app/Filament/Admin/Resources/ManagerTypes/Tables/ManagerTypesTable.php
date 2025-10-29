@@ -2,10 +2,13 @@
 
 namespace App\Filament\Admin\Resources\ManagerTypes\Tables;
 
+use App\Models\ManagerType;
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class ManagerTypesTable
@@ -14,7 +17,8 @@ class ManagerTypesTable
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')
+                    ->label('名称'),
             ])
             ->filters([
                 //
@@ -22,10 +26,12 @@ class ManagerTypesTable
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
+                DeleteAction::make()
+                    ->visible(fn(ManagerType $record): bool => $record->managers->count() == 0),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    //DeleteBulkAction::make(),
                 ]),
             ]);
     }

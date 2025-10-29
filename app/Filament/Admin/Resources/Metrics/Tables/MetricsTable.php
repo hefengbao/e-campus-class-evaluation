@@ -6,6 +6,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class MetricsTable
@@ -14,7 +15,8 @@ class MetricsTable
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('item')->label('条目'),
+                TextColumn::make('point')->label('分值'),
             ])
             ->filters([
                 //
@@ -25,7 +27,7 @@ class MetricsTable
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    //DeleteBulkAction::make(),
                 ]),
             ]);
     }

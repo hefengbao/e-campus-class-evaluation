@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Resources\ExpertTypes\Tables;
 
+use App\Models\ExpertType;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
@@ -21,7 +22,8 @@ class ExpertTypesTable
             ])
             ->recordActions([
                 ViewAction::make(),
-                EditAction::make(),
+                EditAction::make()
+                    ->visible(fn(ExpertType $record): bool => $record->experts->count() == 0),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

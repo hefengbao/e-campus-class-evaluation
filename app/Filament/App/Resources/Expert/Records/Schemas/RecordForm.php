@@ -2,8 +2,10 @@
 
 namespace App\Filament\App\Resources\Expert\Records\Schemas;
 
+use App\Filament\Forms\Components\Description;
 use App\Models\Expert;
 use App\Models\ExpertType;
+use App\Models\Metric;
 use App\Models\Term;
 use App\Models\Timetable;
 use Filament\Forms\Components\DatePicker;
@@ -17,14 +19,25 @@ use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\HtmlString;
 
 class RecordForm
 {
     public static function configure(Schema $schema): Schema
     {
         $term = Term::where('enabled', true)->orderBy('created_at', 'desc')->first();
+        $metrics = Metric::get();
+        $desc = '<ul style="list-style-type: square;">';
+        foreach ($metrics as $item){
+            $desc .= '<li><p>'.$item->item.'（'.$item->point.'分）</p></li>';
+        }
+        $desc .= '</ul>';
         return $schema
             ->components([
+                Section::make('评价指南')
+                    ->description(new HtmlString($desc))
+                    ->schema([])
+                    ->columnSpanFull(),
                 Section::make('课表选择')
                     ->description('通过日期、教室、开始节次过滤查询课表')
                     ->schema([
@@ -46,7 +59,8 @@ class RecordForm
                                 }
 
                                 return $arr;
-                            }),
+                            })
+                            ->live(),
                         Select::make('timetable')
                             ->label('课表')
                             ->options(function (Get $get) use ($term): array {

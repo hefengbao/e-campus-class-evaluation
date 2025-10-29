@@ -13,6 +13,7 @@ use App\Models\ManagerType;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use UnitEnum;
 
 class ManagerTypeResource extends Resource
@@ -45,6 +46,12 @@ class ManagerTypeResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->with(['managers']);
     }
 
     public static function getPages(): array

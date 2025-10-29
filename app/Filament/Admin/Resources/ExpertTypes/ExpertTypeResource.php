@@ -13,6 +13,7 @@ use App\Models\ExpertType;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use UnitEnum;
 
 class ExpertTypeResource extends Resource
@@ -45,6 +46,12 @@ class ExpertTypeResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->with(['experts']);
     }
 
     public static function getPages(): array

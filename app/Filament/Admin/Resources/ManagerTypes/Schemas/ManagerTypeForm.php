@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Resources\ManagerTypes\Schemas;
 
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -14,6 +15,9 @@ class ManagerTypeForm
                 TextInput::make('name')
                     ->label('名称')
                     ->required()
+                    ->columnSpanFull(),
+                Textarea::make('scope')
+                    ->label('查询范围')
                     ->columnSpanFull(),
             ]);
     }
