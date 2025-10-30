@@ -23,13 +23,6 @@ class User extends Authenticatable implements FilamentUser
         'password',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'password' => 'hashed',
-        ];
-    }
-
     public function dept(): BelongsTo
     {
         return $this->belongsTo(Department::class, 'dept_id');
@@ -45,5 +38,12 @@ class User extends Authenticatable implements FilamentUser
         }
 
         return true;
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'password' => 'hashed',
+        ];
     }
 }

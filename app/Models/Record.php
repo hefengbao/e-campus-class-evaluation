@@ -17,8 +17,6 @@ class Record extends Model
         'suggestion', 'score'
     ];
 
-    protected $with = ['term', 'teacher', 'expert', 'expertType'];
-
     public function term(): BelongsTo
     {
         return $this->belongsTo(Term::class);

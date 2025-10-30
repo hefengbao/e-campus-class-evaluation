@@ -12,8 +12,6 @@ class Expert extends Model
 {
     protected $fillable = ['user_id', 'type_id'];
 
-    protected $with = ['user', 'type'];
-
     public function type(): BelongsTo
     {
         return $this->belongsTo(ExpertType::class, 'type_id', 'id');
