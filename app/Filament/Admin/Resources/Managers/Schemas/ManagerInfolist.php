@@ -2,8 +2,8 @@
 
 namespace App\Filament\Admin\Resources\Managers\Schemas;
 
+use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
-use Filament\Tables\Columns\TextColumn;
 
 class ManagerInfolist
 {
@@ -11,9 +11,14 @@ class ManagerInfolist
     {
         return $schema
             ->components([
-                TextColumn::make('user.id')->label('工号'),
-                TextColumn::make('user.name')->label('姓名'),
-                TextColumn::make('type.name')->label('类型'),
+                TextEntry::make('user_id')
+                    ->label('工号'),
+                TextEntry::make('user.name')
+                    ->label('姓名'),
+                TextEntry::make('user.dept.name')
+                    ->label('部门'),
+                TextEntry::make('type.name')
+                    ->label('类型')
             ]);
     }
 }

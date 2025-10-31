@@ -28,7 +28,7 @@ class RecordsTable
                 //TrashedFilter::make(),
                 SelectFilter::make('term_id')
                     ->label('学期')
-                    ->options(Term::orderBy('created_at', 'desc')->pluck('name','id'))
+                    ->options(Term::orderBy('created_at', 'desc')->pluck('name', 'id'))
                     ->preload()
             ])
             ->recordActions([

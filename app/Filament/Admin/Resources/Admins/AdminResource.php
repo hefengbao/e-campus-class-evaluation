@@ -10,10 +10,8 @@ use App\Filament\Admin\Resources\Admins\Schemas\AdminForm;
 use App\Filament\Admin\Resources\Admins\Schemas\AdminInfolist;
 use App\Filament\Admin\Resources\Admins\Tables\AdminsTable;
 use App\Models\Admin;
-use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use UnitEnum;
@@ -23,7 +21,7 @@ class AdminResource extends Resource
     protected static ?string $model = Admin::class;
     protected static ?string $modelLabel = '系统管理员';
     protected static ?string $pluralModelLabel = '系统管理员';
-    protected static string | UnitEnum | null $navigationGroup = '系统设置';
+    protected static string|UnitEnum|null $navigationGroup = '系统设置';
 
     public static function form(Schema $schema): Schema
     {

@@ -51,7 +51,7 @@ class ManagerResource extends Resource
 
     public static function getEloquentQuery(): Builder
     {
-        return parent::getEloquentQuery()->with(['user.dept','type']);
+        return parent::getEloquentQuery()->with(['user.dept', 'type']);
     }
 
     public static function getPages(): array

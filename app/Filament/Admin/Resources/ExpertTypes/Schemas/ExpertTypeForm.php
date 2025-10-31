@@ -11,7 +11,9 @@ class ExpertTypeForm
     {
         return $schema
             ->components([
-                TextInput::make('name')->label('名称')->required()
+                TextInput::make('name')
+                    ->label('名称')
+                    ->required()
             ]);
     }
 }

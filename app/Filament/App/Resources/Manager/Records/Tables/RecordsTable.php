@@ -6,9 +6,7 @@ use App\Models\Term;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
-use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 
 class RecordsTable
@@ -35,7 +33,7 @@ class RecordsTable
                 //TrashedFilter::make(),
                 SelectFilter::make('term_id')
                     ->label('学期')
-                    ->options(Term::orderBy('created_at', 'desc')->pluck('name','id'))
+                    ->options(Term::orderBy('created_at', 'desc')->pluck('name', 'id'))
                     ->preload()
             ])
             ->recordActions([

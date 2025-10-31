@@ -2,16 +2,13 @@
 
 namespace App\Filament\Admin\Resources\Records\Tables;
 
+use App\Models\ManagerType;
 use App\Models\Term;
 use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Actions\ForceDeleteBulkAction;
-use Filament\Actions\RestoreBulkAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
-use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 
 class RecordsTable
@@ -21,25 +18,35 @@ class RecordsTable
         return $table
             ->columns([
                 TextColumn::make('course_name')
-                    ->label('课程名称'),
+                    ->label('课程名称')
+                    ->searchable(),
                 TextColumn::make('teacher.name')
                     ->label('教师')
-                    ->description(fn($record) => $record->teacher_id),
+                    ->description(fn($record) => $record->teacher_id)
+                    ->searchable(),
                 TextColumn::make('class_location')
-                    ->label('教室'),
+                    ->label('教室')
+                    ->searchable(),
                 TextColumn::make('class_date')
-                    ->label('开课日期')->description(fn($record) => $record->start_session . '-' . $record->end_session),
+                    ->label('开课日期')
+                    ->description(fn($record) => $record->start_session . '-' . $record->end_session)
+                    ->searchable(),
                 TextColumn::make('expertType.name')
                     ->label('专家类型'),
                 TextColumn::make('score')
-                    ->label('评分'),
+                    ->label('评分')
+                    ->sortable(),
             ])
             ->filters([
                 //TrashedFilter::make(),
                 SelectFilter::make('term_id')
                     ->label('学期')
-                    ->options(Term::orderBy('created_at', 'desc')->pluck('name','id'))
-                    ->preload()
+                    ->options(Term::orderBy('created_at', 'desc')->pluck('name', 'id'))
+                    ->preload(),
+                SelectFilter::make('expert_type_id')
+                    ->label('专家类型')
+                    ->options(ManagerType::pluck('name', 'id'))
+                    ->preload(),
             ])
             ->recordActions([
                 ViewAction::make(),
@@ -47,9 +54,9 @@ class RecordsTable
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                    ForceDeleteBulkAction::make(),
-                    RestoreBulkAction::make(),
+                    //DeleteBulkAction::make(),
+                    //ForceDeleteBulkAction::make(),
+                    //RestoreBulkAction::make(),
                 ]),
             ]);
     }

@@ -3,7 +3,6 @@
 namespace App\Filament\Admin\Resources\Metrics\Tables;
 
 use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
@@ -15,8 +14,10 @@ class MetricsTable
     {
         return $table
             ->columns([
-                TextColumn::make('item')->label('条目'),
-                TextColumn::make('point')->label('分值'),
+                TextColumn::make('item')
+                    ->label('条目'),
+                TextColumn::make('point')
+                    ->label('分值'),
             ])
             ->filters([
                 //

@@ -19,6 +19,9 @@ class ManagerTypeForm
                 Textarea::make('scope')
                     ->label('查询范围')
                     ->columnSpanFull(),
+                Textarea::make('scope_desc')
+                    ->label('查询范围描述')
+                    ->columnSpanFull(),
             ]);
     }
 }

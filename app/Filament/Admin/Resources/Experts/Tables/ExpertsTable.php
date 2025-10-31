@@ -16,7 +16,8 @@ class ExpertsTable
             ->columns([
                 TextColumn::make('user.id')->label('工号'),
                 TextColumn::make('user.name')->label('姓名'),
-                TextColumn::make('type.name')->label('类型'),
+                TextColumn::make('user.dept.name')->label('部门'),
+                TextColumn::make('type.name')->label('角色'),
             ])
             ->filters([
                 //

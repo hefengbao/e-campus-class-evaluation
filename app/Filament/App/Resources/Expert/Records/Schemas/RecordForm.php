@@ -28,8 +28,8 @@ class RecordForm
         $term = Term::where('enabled', true)->orderBy('created_at', 'desc')->first();
         $metrics = Metric::get();
         $desc = '<ul style="list-style-type: square;">';
-        foreach ($metrics as $item){
-            $desc .= '<li><p>'.$item->item.'（'.$item->point.'分）</p></li>';
+        foreach ($metrics as $item) {
+            $desc .= '<li><p>' . $item->item . '（' . $item->point . '分）</p></li>';
         }
         $desc .= '</ul>';
         return $schema

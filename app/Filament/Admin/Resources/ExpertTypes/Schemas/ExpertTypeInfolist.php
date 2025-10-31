@@ -11,8 +11,11 @@ class ExpertTypeInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('id')->label('ID'),
-                TextEntry::make('name')->label('名称'),
-            ]);
+                TextEntry::make('id')
+                    ->label('ID'),
+                TextEntry::make('name')
+                    ->label('名称'),
+            ])
+            ->columns(1);
     }
 }
