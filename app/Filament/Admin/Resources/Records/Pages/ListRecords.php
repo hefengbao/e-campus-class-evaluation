@@ -3,6 +3,8 @@
 namespace App\Filament\Admin\Resources\Records\Pages;
 
 use App\Filament\Admin\Resources\Records\RecordResource;
+use App\Filament\Exports\RecordExporter;
+use Filament\Actions\ExportAction;
 use Filament\Resources\Pages\ListRecords as BaseListRecords;
 
 class ListRecords extends BaseListRecords
@@ -13,6 +15,9 @@ class ListRecords extends BaseListRecords
     {
         return [
             //CreateAction::make(),
+            ExportAction::make()
+                ->label('导出')
+                ->exporter(RecordExporter::class),
         ];
     }
 }
