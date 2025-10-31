@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class ManagerType extends Model
 {
-    protected $fillable = ['name', 'scope'];
+    protected $fillable = ['name', 'scope', 'scope_desc'];
 
     public function managers(): HasMany
     {
