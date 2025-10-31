@@ -1,61 +1,89 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 专家听评课管理系统
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 功能
 
-## About Laravel
+主要功能介绍：
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 用户
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- 教师
+    - [x] 听评课记录列表、查看
+- 专家
+    - [x] 听评课记录列表、查看
+    - [x] 添加听评课记录
+- 管理人员
+    - [x] 听评课记录列表、查看、导出
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 系统管理员
 
-## Learning Laravel
+- 评课设置
+    - [x] 指标管理
+    - [x] 学年学期管理
+    - [x] 课程列表
+- 专家管理
+    - [x] 专家类型管理：增删改查
+    - [x] 专家管理：：增删改查
+- 管理人员
+    - [x] 管理人员类型管理：增删改查
+    - [x] 管理人员管理：：增删改查
+- 听课记录
+    - [x] 听课记录列表、查看
+    - [x] 数据导出
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 运行 Demo
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+克隆代码：
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```shell
+git clone https://github.com/hefengbao/e-campus-class-evaluation.git ce
+````
 
-## Laravel Sponsors
+进入项目目录：
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```shell
+cd ce
+```
 
-### Premium Partners
+安装依赖：
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+```shell
+composer install
+```
 
-## Contributing
+基础配置：
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```shell
+cp .env.example .env
+php artisan key:generate
+php artisan storage:link
+```
 
-## Code of Conduct
+迁移数据表：
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```shell
+php artisan migrate
+```
 
-## Security Vulnerabilities
+填充测试数据：
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```shell
+php artisan db:seed --class=UserSeeder
+php artisan db:seed --class=MetricSeeder
+php artisan db:seed --class=TimetableSeeder
+php artisan db:seed --class=ExpertTypeSeeder
+php artisan db:seed --class=ManagerTypeSeeder
+```
 
-## License
+初始化【超级管理员】：
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```shell
+php artisan app:init-admin
+```
+
+![](./screenshot/1.gif)
+
+```shell
+php artisan serve
+```
+
+访问（示例地址）：`http://127.0.0.1:8000` 、 `http://127.0.0.1:8000/admin` 。
