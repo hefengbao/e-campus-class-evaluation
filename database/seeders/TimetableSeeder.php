@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Timetable;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class TimetableSeeder extends Seeder
@@ -56,8 +55,8 @@ class TimetableSeeder extends Seeder
                 'dept_id' => 1,
                 'class_location' => 'A' . 100 + $i,
                 'class_date' => date('Y-m-d'),
-                'start_session' => random_int(1,4),
-                'end_session' => random_int(5,8),
+                'start_session' => random_int(1, 4),
+                'end_session' => random_int(5, 8),
                 'student_counts' => 20
             ]);
         }
