@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->tinyText('scope')->nullable()->comment('查询范围');
+            $table->tinyText('scope_desc')->nullable()->comment('查询范围描述');
             $table->timestamps();
         });
     }
